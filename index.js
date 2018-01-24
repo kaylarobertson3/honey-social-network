@@ -1,5 +1,5 @@
 
-// SETUP ========================================================================================================================================================================
+// SETUP =================================================================================================================
 
 // express
 const express = require('express');
@@ -29,7 +29,7 @@ const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 app.use(cookieParser());
 app.use(cookieSession({
-    secret: 'Top-secret secret. Update this!!!!!',
+    secret: 'Top-secret secret',
     maxAge: 1000 * 60 * 60 * 24 * 14
 }));
 
@@ -86,6 +86,8 @@ app.use(express.static('./uploads')); // is this needed????
 //         res.sendFile(__dirname + '/index.html');
 //     }
 // });
+
+
 
 // Welcome ====================================================================================
 app.get('/welcome', (req, res) => { // not logged in route
