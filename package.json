@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js",
-    "start": "npm run build && node index.js",
+    "build": "node bundle-server.js",
+    "start": "npm run bundle-server && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {

@@ -2,7 +2,7 @@
 
 A mock social network where users can login or register, upload a profile picture, and add and delete friends.
 
-<!-- View full project online **[here](https://u-bahn-typography.herokuapp.com/).** -->
+View full project **[online here](https://honey-social-network.herokuapp.com/).**
 
 ## Technologies
 * **Language**: JavaScript
