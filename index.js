@@ -356,7 +356,7 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
 
 app.get('*', function(req, res) {
     if (!req.session.user) {
-        res.redirect('/');
+        res.redirect('/welcome');
 
     } else if (req.session.user) {
         res.sendFile(__dirname + '/index.html');
