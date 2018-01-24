@@ -354,14 +354,14 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
 
 // SPA ROUTING ========================================================================================================================================================================
 
-app.get('*', function(req, res) {
-    if (!req.session.user) {
-        res.redirect('/welcome');
-
-    } else if (req.session.user) {
-        res.sendFile(__dirname + '/index.html');
-    }
-});
+// app.get('*', function(req, res) {
+//     if (!req.session.user) {
+//         res.redirect('/welcome');
+//
+//     } else if (req.session.user) {
+//         res.sendFile(__dirname + '/index.html');
+//     }
+// });
 
 
 
