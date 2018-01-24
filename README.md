@@ -12,8 +12,8 @@ A mock social network where users can login or register, upload a profile pictur
 
 ## Preview
 
-![Preview 1](https://github.com/kaylarobertson3/honey-social-network/blob/master/preview1.gif =350x
- "Preview 1")
+![Preview 1](https://github.com/kaylarobertson3/honey-social-network/blob/master/preview1.gif "Preview 1"){:width=300}
+
 
 
  The homepage where users can sign up or log in.
@@ -26,10 +26,11 @@ A mock social network where users can login or register, upload a profile pictur
 
 
 
- ![Preview 1](https://github.com/kaylarobertson3/honey-social-network/blob/master/preview2.gif =350x
-  "Preview 1")
+ ![Preview 1](https://github.com/kaylarobertson3/honey-social-network/blob/master/preview2.gif "Preview 1"){:width=300}
 
-  Once logged in, users can upload a profile picture by clicking on the profile picture in the navigation bar or on their profile. They can also update their bio.
+
+
+Once logged in, users can upload a profile picture by clicking on the profile picture in the navigation bar or on their profile. They can also update their bio.
 
 
 ## Features in progress
