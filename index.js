@@ -69,7 +69,8 @@ var uploader = multer({
 
 // Static
 app.use('/public', express.static(__dirname + '/public'));
-app.use(express.static('./uploads')); // is this needed????
+
+// app.use(express.static('./uploads'));
 
 
 
@@ -354,14 +355,14 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
 
 // SPA ROUTING ========================================================================================================================================================================
 
-// app.get('*', function(req, res) {
-//     if (!req.session.user) {
-//         res.redirect('/welcome');
-//
-//     } else if (req.session.user) {
-//         res.sendFile(__dirname + '/index.html');
-//     }
-// });
+app.get('*', function(req, res) {
+    if (!req.session.user) {
+        res.redirect('/welcome');
+
+    } else if (req.session.user) {
+        res.sendFile(__dirname + '/index.html');
+    }
+});
 
 
 
