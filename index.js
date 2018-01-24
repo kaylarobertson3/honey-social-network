@@ -358,9 +358,6 @@ app.get('*', function(req, res) {
     if (!req.session.user) {
         res.redirect('/welcome');
 
-    // else if (req.session.user && req.url == '/welcome' ) {
-    //     res.redirect('/');
-
     } else if (req.session.user) {
         res.sendFile(__dirname + '/index.html');
     }
@@ -369,5 +366,8 @@ app.get('*', function(req, res) {
 
 
 // RUN SERVER ============================================================================================================================================
+var port = process.env.OORT || 8080;
 
-app.listen(process.env.PORT || 8080);
+app.listen(port, function() {
+    console.log("app is running on port " + port);
+});
