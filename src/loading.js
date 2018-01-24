@@ -1,16 +1,6 @@
 import React, {Component} from 'react';
 import ReactLoading from 'react-loading';
 
-// export default class Loading extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Loading...</h1>
-//             </div>
-//         )
-//     }
-// }
-
 export default class Loading extends Component {
 
 	render() {
@@ -22,11 +12,3 @@ export default class Loading extends Component {
 		)
 	}
 }
-
-
-//
-// const Example = ({ type, color }) => (
-// 	<ReactLoading type={type} color={color} height='667' width='375' />
-// );
-//
-// export default Example;

@@ -54,7 +54,6 @@ const loggedInRouter = (
                 <Route path="/user/:userid" component={OtherProfile}/>
                 <Route path="/friends" component={Friends}/>
                 <Route path="/online" component={Online}/>
-                {/* <Route path="/online/" component={Online}/> */}
                 <IndexRoute component={Profile} />
             </Route>
         </Router>

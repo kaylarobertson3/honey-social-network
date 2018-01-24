@@ -5,7 +5,6 @@ import Loading from './loading'
 export default class Welcome extends Component {
     constructor(props) {
         super(props);
-        console.log('this.props is', this.props);
         this.state = {loaded: false}; // setting up defualt state
         }
 
@@ -15,7 +14,6 @@ export default class Welcome extends Component {
 
         // if there is no state, use loading component.
         render() {
-            console.log("STATE", this.state.loaded);
             if(this.state.loaded == false) {
                 console.log("loading");
                 return (
@@ -24,7 +22,6 @@ export default class Welcome extends Component {
                     </div>
                 )
             } else {
-            console.log(this.state);
             return (
                 <div>
                     <div className="welcome animated fadeIn">

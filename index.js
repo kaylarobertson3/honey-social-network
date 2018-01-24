@@ -156,7 +156,6 @@ app.get('/logout', (req, res) => {
     // req.session.destroy();
     req.session = null;
     res.redirect('/welcome');
-    console.log("Logging out. cookies:", req.session);
 });
 
 
@@ -165,7 +164,6 @@ app.get('/logout', (req, res) => {
 
 // register ========================================================================================================================================================================
 app.post('/register', (req, res) => {
-    console.log("register req.body: ", req.body);
 
     db.hashPassword(req.body.password).then((password) => {
         db.register(req.body.first, req.body.last, req.body.email, password).then((id) => {
@@ -176,7 +174,6 @@ app.post('/register', (req, res) => {
                 last: req.body.last,
                 email: req.body.email
             };
-            console.log("set cookies on /register: ", req.session);
             res.json({success: true});
             // res.redirect('/') // where do we redirect?
         });
@@ -190,13 +187,11 @@ app.post('/register', (req, res) => {
 
 // update profile picture ========================================================================================================================================================================
 app.post('/updateProfilePic', uploader.single('file'), (req, res) => {
-    console.log("************* starting image upload ****************");
     if (req.file) {
         s3.uploadToS3(req.file)
             .then(() => {
                 return db.updateProfilePic(req.file.filename, req.session.user.id);
             }).then((image) => {
-                console.log("results from updateProfilePic thing in index.js", image, S3config.s3Url + req.file.filename);
                 res.json({
                     success: true,
                     imgUrl: S3config.s3Url + req.file.filename
@@ -213,10 +208,8 @@ app.post('/updateProfilePic', uploader.single('file'), (req, res) => {
 
 // UPDATE BIO ========================================================================================================================================================================
 app.post('/updateBio', (req, res) => {
-    console.log("inside post req.body.bio", req.body.bio);
     db.updateBio(req.body.bio, req.session.user.id)
         .then(results => {
-            console.log('results from updateBio post', results);
             res.json({
                 success: true,
                 bio: req.body.bio
@@ -233,10 +226,8 @@ app.post('/login', (req, res) => {
         res.json('Error: Empty input');
         console.log("Error: Empty input");
     } else {
-        console.log("in post /login. Req.body: ", req.body);
         //compare against email to  check get password
         db.getUserInfo(req.body.email).then((results) => {
-            console.log("in getUserInfo. Results: ", results);
             return db.checkPassword(req.body.password, results.password).then((match) => {
                 if (match) {
                     //set cookies on login
@@ -251,9 +242,7 @@ app.post('/login', (req, res) => {
                     res.json({success: true});
                 } else {
                     res.json({errorMessage: 'email/password not a match'});
-                    console.log('email/password not a match. cookies: ', req.session.user);
                 }
-                console.log("are you logged in?", req.session);
             });
 
         }).catch((err) => {
@@ -288,7 +277,6 @@ app.post('/terminateFriendship/:userid', (req, res) => {
 // SEND FRIEND REQUEST
 app.post('/sendFriendRequest/:userid', (req, res) => {
     db.sendFriendRequest(req.session.user.id, req.params.userid).then((data) => {
-        console.log("results from send friendrequest", data.rows[0]);
         res.json({
             success: true,
             sender: data.rows[0].sender_id,
@@ -300,7 +288,6 @@ app.post('/sendFriendRequest/:userid', (req, res) => {
 
 // FRIENDS PAGE
 app.get("/getFriends", (req, res) => {
-    console.log("in index get /getFriends. logged in user is:", req.session.user.id);
     db.getFriends(req.session.user.id)
         .then((friendsData) => {
             friendsData.forEach((friendsData) => {
@@ -310,8 +297,6 @@ app.get("/getFriends", (req, res) => {
                     friendsData.imgurl = S3config.s3Url + friendsData.imgurl;
                 }
             });
-            console.log("data from index get/getFriends: ", friendsData);
-            // res.json(friendsData);
             res.json({
                 friendsData
             });
@@ -350,8 +335,6 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
     if (!req.session.user) {
         return res.sendStatus(500);
     }
-
-    console.log(socketId, id);
     const socketId = req.params.socketId;
     const id = req.session.user.id;
 
@@ -360,7 +343,6 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
     );
 
     if (onlineIds.length == 0) {
-        console.log("no online users");
     }
 
     db.getOnlineUsersById(onlineIds).then(data => {
@@ -373,7 +355,6 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
 // SPA ROUTING ========================================================================================================================================================================
 
 app.get('*', function(req, res) {
-    console.log("in * route");
     if (!req.session.user) {
         res.redirect('/welcome');
 

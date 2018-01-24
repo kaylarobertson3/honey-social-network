@@ -15,7 +15,6 @@ export default class Profile extends Component {
     }
 
     render() {
-        console.log(this.state);
         if(!this.state) {
             console.log("loading");
             return (
@@ -24,7 +23,6 @@ export default class Profile extends Component {
                 </div>
             )
             } else {
-                        console.log("rendering profile with these props: ", this.props);
             return (
                 <div className="animated fadeIn">
                     <div className="coverWrapper">

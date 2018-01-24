@@ -5,7 +5,7 @@ export default class UpdateBio extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bio: '' // should thid be empty?
+            bio: ''
         }
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this);
@@ -16,21 +16,16 @@ export default class UpdateBio extends Component {
         this.setState({
             [e.target.name]: e.target.value // this is NOT AN ARRAY
         }, () => {
-            console.log("the new state: ", this.state);
         });
     }
 
      handleSubmit(e) {
          const {bio} = this.state;
-         console.log('update Bio clicked');
          if (bio) { // req.body is undefuned
              axios.post("/updateBio", {
                  bio: this.state.bio
              }).then((resp) => {
-                 console.log("inside bio ajax request", resp);
-                 this.props.setBio(resp.data.bio) // this is wrong
-                 // location.replace('/'); // this is wrong
-                 // how to hide this module when save changes (handleSubmit) is clicked?
+                 this.props.setBio(resp.data.bio)
             });
      } else {
          this.setState({error: true, message: "Are you sure you want to leave your bio empty?"});

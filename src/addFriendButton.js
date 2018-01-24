@@ -16,18 +16,7 @@ export default class AddFriendButton extends Component {
         // changes status to 0
         axios.post('/sendFriendRequest/' + this.props.userid).then((resp) => {
 
-            console.log(resp);
             if (resp.data.success) {
-            //     if sender is the other person
-            //     if (resp.data.sender == this.props.userid) {
-            //         console.log("sender is the other person");
-            //         this.setState({
-            //             acceptFriendRequest: true,
-            //             declineFriendRequest: true
-            //         })
-            //     }
-            // if (resp.data.recipient === userid)
-            //     else if (resp.data.recipient == this.props.userid ){
                     console.log("sender is me");
                     this.setState({
                         cancelFriendRequest: true,

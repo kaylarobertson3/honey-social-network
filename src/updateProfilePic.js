@@ -24,7 +24,6 @@ export default class UpdateProfilePic extends Component {
 
     handleSubmit(e) {
         const {file} = this.state;
-        console.log('Upload clicked');
         var formData = new FormData();
         if (file) {
             formData.append('file', file);

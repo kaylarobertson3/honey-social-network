@@ -37,7 +37,6 @@ export default class OtherProfile extends Component {
         }
 
     render() {
-        console.log("LOADING CHECK", this.state.first);
         if (!this.state.first) {
             return (
             <div>

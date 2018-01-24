@@ -41,7 +41,6 @@ class Friends extends Component {
                 </div>
                 <br/>
                 <br/>
-                <br/>
 
                 <h2>Friend Requests</h2>
                 <div className="friendRequests">
@@ -58,6 +57,7 @@ class Friends extends Component {
                             </button>
                         </div>
 
+
                     )}
                 </div>
             </div>
@@ -67,7 +67,6 @@ class Friends extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log(state.friends);
     return {
         friends: state.friends && state.friends.filter(friends => friends.status == '1'),
         friendRequests: state.friends && state.friends.filter(friends => friends.status == '0')

@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 export default class Register extends Component {
     constructor(props) {
         super(props);
-        console.log('this.props is', this.props);
         this.state = {
             first: '',
             last: '',
@@ -20,23 +19,19 @@ handleChange(e) {
     this.setState({
         [e.target.name]: e.target.value // this is NOT AN ARRAY
     }, () => {
-        console.log("the new state!: ", this.state);
     });
 }
 
 handleClick(e) {
     e.preventDefault();
-    console.log("clicked!");
     const { first, last, email, password } = this.state
     const data = { first, last, email, password}
-    console.log(data);
 
     if (!email || !password || !first || !last) {
         this.setState({error: true, message: "can't be empty inputs"})
     } else {
         axios.post('/register', data)
         .then(resp => {
-            console.log("inside axios");
             if (resp.data.success) {
                 location.replace('/');
             } else {

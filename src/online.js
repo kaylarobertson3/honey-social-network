@@ -6,11 +6,9 @@ import Loading from './loading';
 export class Online extends Component {
     componentDidMount() {
         this.props.allOnlineUsers()
-        console.log("********", this.props);
     };
 
     render() {
-        // console.log("STATE", this.state.first);
         const { allOnlineUsers, online } = this.props;
 
         if(!online) {

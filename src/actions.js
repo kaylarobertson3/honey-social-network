@@ -3,7 +3,6 @@ import axios from 'axios';
 // get friends
 export function getFriends() {
     return axios.get('/getFriends').then(function({data}) {
-        console.log("data from axios get friends", data.friendsData);
         return {
             type: 'GET_FRIENDS',
             friends: data.friendsData
@@ -13,7 +12,6 @@ export function getFriends() {
 
 // end friendship
 export function endFriendship(id) {
-    console.log("inside endFriendship action");
     const data = {
         action: "endFriendship",
         id: id
@@ -29,7 +27,6 @@ export function endFriendship(id) {
 
 // accept friendship
 export function acceptFriendRequest(id) {
-    console.log("inside acceptFriendRequest action");
     const data = {
         action: 'acceptFriendRequest',
         id: id
@@ -50,7 +47,6 @@ export function allOnlineUsers(id) {
         id: id
     };
     return axios.get('/getOnlineUsers/' + id, data).then((data) => {
-        console.log("data from axios getonlineusers: ", data);
         return {
             type: 'GET_ONLINE_USERS'
             // online:
