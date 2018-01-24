@@ -366,7 +366,7 @@ app.get('*', function(req, res) {
 
 
 // RUN SERVER ============================================================================================================================================
-var port = process.env.OORT || 8080;
+var port = process.env.PORT || 8080;
 
 
 app.listen(port, function() {
