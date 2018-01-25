@@ -69,9 +69,9 @@ var uploader = multer({
 
 // Static
 
-// app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/pubilc', express.static(path.join(__dirname, 'public')));
 
-app.use('/public', express.static(__dirname + '/public'));
+// app.use('/public', express.static(__dirname + '/public'));
 
 // app.use('/public', express.static(__dirname +'/public'));
 
