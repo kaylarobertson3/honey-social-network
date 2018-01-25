@@ -59,8 +59,6 @@ const notLoggedInRouter = (<Provider store={store}>
 </Provider>);
 
 
-
-
 // this dictates which router we will use based on the url. In server, set cookies or something to dictace which url shows up.
 
 let router;
