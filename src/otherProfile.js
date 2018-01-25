@@ -48,7 +48,7 @@ export default class OtherProfile extends Component {
             return (
                 <div className="animated fadeIn">
                     <div className="coverWrapper">
-                        <img className="cover" src="/./public/honey.jpg"/>
+                        <img className="cover" src="honey.jpg"/>
                     </div>
                     {this.state.error && <div className="error"><p>{this.state.message}</p></div>}
                     <div className="profilePic">

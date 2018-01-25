@@ -26,7 +26,7 @@ export default class Welcome extends Component {
                 <div>
                     <div className="welcome animated fadeIn">
                         <div className="welcomeFlex">
-                            <img className="logo" src="./public/logo2.png"/>
+                            <img className="logo" src="/logo2.png"/>
                             <h1 className="welcomeH12">Creating buzz between beekeepers</h1>
                             <div className="welcomeContainer">
                             {this.props.children}

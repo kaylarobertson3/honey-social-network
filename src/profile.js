@@ -26,7 +26,7 @@ export default class Profile extends Component {
             return (
                 <div className="animated fadeIn">
                     <div className="coverWrapper">
-                        <img className="cover" src="/./public/honey.jpg"/>
+                        <img className="cover" src="/honey.jpg"/>
                     </div>
                     <div className="profilePic">
                         <ProfilePic imgUrl={this.props.imgUrl} showUploader={() => this.setState({

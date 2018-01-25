@@ -42,7 +42,6 @@ export default class UpdateProfilePic extends Component {
     }
 
 
-
     render() {
         return (
             <div>
