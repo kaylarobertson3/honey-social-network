@@ -33,7 +33,6 @@ import Online from './online';
 
 
 
-let router;
 
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
 
@@ -44,10 +43,10 @@ const loggedInRouter = (<Provider store={store}>
                 <Route path="/friends" component={Friends}/>
                 <Route path="/online" component={Online}/>
                 <IndexRoute component={Profile} />
+                <redirect from="*" to="/"/>
             </Route>
         </Router>
-    </Provider>
-);
+    </Provider>);
 
 
 const notLoggedInRouter = (<Provider store={store}>
@@ -63,6 +62,8 @@ const notLoggedInRouter = (<Provider store={store}>
 
 
 // this dictates which router we will use based on the url. In server, set cookies or something to dictace which url shows up.
+
+let router;
 if (location.pathname === '/welcome') {
     router = notLoggedInRouter
 } else {
