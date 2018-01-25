@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
       "build": "node build.js",
       "start": "node index.js",
+      "postinstall": "npm run build",
       "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {

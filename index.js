@@ -70,7 +70,7 @@ var uploader = multer({
 // Static
 
 // app.use('/public', express.static(__dirname +'/public'));
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/./public/'));
 // app.use(express.static('./uploads'));
 
 
@@ -94,7 +94,7 @@ app.use(express.static(__dirname + '/public/'));
 // Welcome ====================================================================================
 app.get('/welcome', (req, res) => { // not logged in route
     if (req.session.user) { // only see /welcome if you're not a user
-        res.redirect('/welcome'); // redirect to app, because the router would be notLoggedIn
+        res.redirect('/'); // redirect to app, because the router would be notLoggedIn
     } else {
         res.sendFile(__dirname + '/index.html');
     }
