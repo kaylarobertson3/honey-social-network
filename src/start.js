@@ -37,18 +37,7 @@ let router;
 
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
 
-const notLoggedInRouter = (
-    <Router history={hashHistory}>
-        <Route path="/" component={Welcome}>
-            <Route path="/login" component={Login}/>
-            <IndexRoute component={Register}/>
-        </Route>
-    </Router>
-);
-
-
-const loggedInRouter = (
-    <Provider store={store}>
+const loggedInRouter = (<Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <Route path="/user/:userid" component={OtherProfile}/>
@@ -59,6 +48,19 @@ const loggedInRouter = (
         </Router>
     </Provider>
 );
+
+
+const notLoggedInRouter = (<Provider store={store}>
+    <Router history={hashHistory}>
+        <Route path="/" component={Welcome}>
+            <Route path="/login" component={Login}/>
+            <IndexRoute component={Register}/>
+        </Route>
+    </Router>
+</Provider>);
+
+
+
 
 // this dictates which router we will use based on the url. In server, set cookies or something to dictace which url shows up.
 if (location.pathname === '/welcome') {
