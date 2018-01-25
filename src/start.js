@@ -69,4 +69,4 @@ if (location.pathname === '/welcome') {
     router = loggedInRouter
 }
 
-ReactDOM.render(router, document.querySelector('main'));
+ReactDOM.render(router, document.querySelector('#main'));
