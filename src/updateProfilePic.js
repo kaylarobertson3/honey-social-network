@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ProfilePic from './profilePic';
-import AvatarCropper from "react-avatar-cropper";
 
 
 export default class UpdateProfilePic extends Component {
@@ -30,12 +29,12 @@ export default class UpdateProfilePic extends Component {
             axios.post('/updateProfilePic', formData).then((resp) => {
                 console.log("setting new image with: ", resp.data.imgUrl);
                 this.props.setImage(resp.data.imgUrl)
-                //trying to hide modal after upload sucess
-                //trying to auto update photo upon upload
-                // location.replace('/'); // this is wrong
+                this.setState({message: resp.data.message})
+                console.log(resp.data.message, "was photo submited?");
+            }).catch((err) => {
+                console.log("error in updating profile pic", err);
+                this.setState({error:true, message: 'file too large'});
             })
-
-
         } else {
             this.setState({error: true, message: "no file attached"})
             console.log("no file attached");
@@ -46,13 +45,6 @@ export default class UpdateProfilePic extends Component {
 
     render() {
         return (
-            // <div className="updateProfilePic animated fadeInLeft">
-            //     <div class="icono-mail"></div>
-            //     <h1>Update profile picture</h1>
-            //     <input type="file" name="file" onChange={this.handleChange} />
-            //     <button type = "submit" onClick={this.handleSubmit}>Upload</button>
-            //     {this.state.error && <div className="error"><p>{this.state.message}</p></div>}
-            // </div>
             <div>
                  <div className="updateProfilePic animated fadeInDown">
                      <div className="updateProfilePicWrapper">
@@ -60,13 +52,6 @@ export default class UpdateProfilePic extends Component {
                     <input type="file" name="file" onChange={this.handleChange} />
                     <button type = "submit" onClick={this.handleSubmit}>Upload</button>
                     {this.state.error && <div className="error"><p>{this.state.message}</p></div>}
-                    {/* <AvatarCropper
-                     onRequestHide={this.handleRequestHide}
-                     onCrop={this.handleCrop}
-                     image={this.state.img}
-                     width={400}
-                     height={400}
-                   /> */}
                 </div>
                </div>
              </div>

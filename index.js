@@ -201,7 +201,7 @@ app.post('/updateProfilePic', uploader.single('file'), (req, res) => {
                 console.log("error in catch of index.js updateprofile pic ", err);
             });
     } else {
-        res.json({success: false});
+        res.json({success: false, message: "File too large!"});
         console.log("there was no good file");
     }
 });
@@ -356,9 +356,9 @@ app.get('/getOnlineUsers/:socketId', (req, res) => {
 // SPA ROUTING ========================================================================================================================================================================
 
 app.get('*', function(req, res) {
-    if (!req.session.user) {
-        res.redirect('/welcome');
-
+    if (!req.session.user && req.url != '/welcome/')  {
+        res.redirect('/welcome/');
+        return;
     } else if (req.session.user) {
         res.sendFile(__dirname + '/index.html');
     }
@@ -368,7 +368,6 @@ app.get('*', function(req, res) {
 
 // RUN SERVER ============================================================================================================================================
 var port = process.env.PORT || 8080;
-
 
 app.listen(port, function() {
     console.log("app is running on port " + port);
