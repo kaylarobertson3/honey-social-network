@@ -165,7 +165,7 @@ app.get('/otherProfile/:userid', (req, res) => {
 app.get('/logout', (req, res) => {
     // req.session.destroy();
     req.session = null;
-    res.redirect('/welcome');
+    res.redirect('/');
 });
 
 
